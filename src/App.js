@@ -30,14 +30,20 @@ export default class App extends React.Component {
         <Text style={[styles.timerText, styles.monospace, styles.debugBorder]}>
           {timerText}
         </Text>
-        <Button
-          title="Start run"
-          color={buttonColor}
-          onPress={this.onStartRun}
-        />
-        <Button title="Speed up" color={buttonColor} onPress={vibe.speedUp} />
-        <Button title="Slow down" color={buttonColor} onPress={vibe.slowDown} />
-        <Button title="All done" color={buttonColor} onPress={vibe.allDone} />
+        <View style={[styles.flex1, styles.spaceBetween]}>
+          <Button
+            title="Start run"
+            color={buttonColor}
+            onPress={this.onStartRun}
+          />
+          <Button title="Speed up" color={buttonColor} onPress={vibe.speedUp} />
+          <Button
+            title="Slow down"
+            color={buttonColor}
+            onPress={vibe.slowDown}
+          />
+          <Button title="All done" color={buttonColor} onPress={vibe.allDone} />
+        </View>
       </SafeAreaView>
     );
   }
@@ -85,6 +91,12 @@ const styles = StyleSheet.create({
   debugBorder: {
     borderWidth: 0,
     borderColor: "gold"
+  },
+  spaceBetween: {
+    justifyContent: "space-between"
+  },
+  flex1: {
+    flex: 1
   },
   container: {
     flex: 1,
