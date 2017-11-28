@@ -25,18 +25,19 @@ export default class App extends React.Component {
   render() {
     const { statusBarOffset, timerText, buttonColor } = this.state;
     return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar
-          translucent
-          backgroundColor="rgba(0, 0, 0, 0.3)"
-          barStyle="light-content"
-        />
-        <Text style={[styles.timerText, styles.monospace]}>{timerText}</Text>
+      <SafeAreaView style={[styles.container, styles.debugBorder]}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
+        <Text style={[styles.timerText, styles.monospace, styles.debugBorder]}>
+          {timerText}
+        </Text>
         <Button
           title="Start run"
           color={buttonColor}
           onPress={this.onStartRun}
         />
+        <Button title="Speed up" color={buttonColor} onPress={vibe.speedUp} />
+        <Button title="Slow down" color={buttonColor} onPress={vibe.slowDown} />
+        <Button title="All done" color={buttonColor} onPress={vibe.allDone} />
       </SafeAreaView>
     );
   }
@@ -81,15 +82,15 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  debugBorder: {
+    borderWidth: 0,
+    borderColor: "gold"
+  },
   container: {
     flex: 1,
-    backgroundColor: MC.grey[800],
+    backgroundColor: "black",
     alignItems: "center",
-    justifyContent: "flex-start",
-    paddingTop: Platform.select({
-      ios: 0,
-      android: StatusBar.currentHeight
-    })
+    justifyContent: "flex-start"
   },
   timerText: {
     fontSize: 80,
