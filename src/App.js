@@ -1,17 +1,9 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  StatusBar,
-  Platform,
-  Dimensions
-} from "react-native";
+import { SafeAreaView, Text, View, Button, StatusBar } from "react-native";
 import moment from "moment";
 import * as MC from "material-colors";
 
+import S from "./styles";
 import * as vibe from "./vibe";
 
 export default class App extends React.Component {
@@ -23,14 +15,14 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { statusBarOffset, timerText, buttonColor } = this.state;
+    const { timerText, buttonColor } = this.state;
     return (
-      <SafeAreaView style={[styles.container, styles.debugBorder]}>
+      <SafeAreaView style={[S.container, S.debugBorder]}>
         <StatusBar backgroundColor="black" barStyle="light-content" />
-        <Text style={[styles.timerText, styles.monospace, styles.debugBorder]}>
+        <Text style={[S.timerText, S.monospace, S.debugBorder]}>
           {timerText}
         </Text>
-        <View style={[styles.flex1, styles.spaceBetween]}>
+        <View style={[S.flex1, S.spaceBetween]}>
           <Button
             title="Start run"
             color={buttonColor}
@@ -86,35 +78,3 @@ export default class App extends React.Component {
     }
   };
 }
-
-const styles = StyleSheet.create({
-  debugBorder: {
-    borderWidth: 0,
-    borderColor: "gold"
-  },
-  spaceBetween: {
-    justifyContent: "space-between"
-  },
-  flex1: {
-    flex: 1
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "black",
-    alignItems: "center",
-    justifyContent: "flex-start"
-  },
-  timerText: {
-    fontSize: 80,
-    marginBottom: 20,
-    color: "white"
-  },
-  monospace: Platform.select({
-    android: {
-      fontFamily: "Roboto"
-    },
-    ios: {
-      fontFamily: "Avenir"
-    }
-  })
-});
